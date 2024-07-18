@@ -366,6 +366,42 @@ display: none;
 high-throughput experimental data. These data include <em>single</em>
 and <em>dual</em> channel microarray-based experiments measuring mRNA,
 genomic DNA, and protein abundance.</p>
+<p><a href="https://bioconductor.org/packages/release/bioc/vignettes/GEOquery/inst/doc/GEOquery.html"></a></p>
+<div id="getting-started-using-geoquery" class="section level2">
+<h2>Getting Started using GEOquery</h2>
+<p>The function <code>getGEO</code> interprets its input and determines
+how to get the data from GEO.</p>
+<div id="installation" class="section level4">
+<h4>Installation</h4>
+<p>Based on <em>bioconductor</em> and <code>BiocManager</code></p>
+<pre><code>{r}
+BiocManager::install(&quot;GEOquery&quot;)</code></pre>
+<p><code>{r} library(GEOquery)</code></p>
+<div id="geo-accession-series" class="section level5">
+<h5>GEO accession series</h5>
+<p>A Series record defines a set of related Samples considered to be
+part of a group, how the Samples are related, and if and how they are
+ordered. Each Series record is assigned a unique and stable <strong>GEO
+accession number (GSE…)</strong>. The matrix file is accessible and
+downloaded by identifying <em>GSE number</em> of a particular
+datasets.</p>
+<ul>
+<li><p>Here I choose a GSE for an example</p></li>
+<li><p>A network connection is required to access the GSE
+dataset</p></li>
+</ul>
+<p><code>{r} data &lt;- getGEO(GEO = &quot;GSE30812&quot;, GSEMatrix = T, getGPL = T, AnnotGPL = T)</code></p>
+<ul>
+<li><p><em>GSEMatrix</em> argument is defined as providing a matrix
+includes information of data</p></li>
+<li><p><em>getGPL</em> argument is defined as presenting features of
+samples and clinical information</p></li>
+<li><p><em>AnnotGPL</em> argument is defined as providing annotation of
+probes to know probe IDs and genes</p></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 
