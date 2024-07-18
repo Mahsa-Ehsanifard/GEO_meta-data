@@ -374,8 +374,7 @@ how to get the data from GEO.</p>
 <div id="installation" class="section level4">
 <h4>Installation</h4>
 <p>Based on <em>bioconductor</em> and <code>BiocManager</code></p>
-<pre><code>{r}
-BiocManager::install(&quot;GEOquery&quot;)</code></pre>
+<p><code>{r} BiocManager::install(&quot;GEOquery&quot;)</code></p>
 <p><code>{r} library(GEOquery)</code></p>
 <div id="geo-accession-series" class="section level5">
 <h5>GEO accession series</h5>
@@ -386,11 +385,11 @@ accession number (GSE…)</strong>. The matrix file is accessible and
 downloaded by identifying <em>GSE number</em> of a particular
 datasets.</p>
 <ul>
-<li><p>Here I choose a GSE for an example</p></li>
+<li><p>Here I choose a GSE related to MDS data for an example</p></li>
 <li><p>A network connection is required to access the GSE
 dataset</p></li>
 </ul>
-<p><code>{r} data &lt;- getGEO(GEO = &quot;GSE30812&quot;, GSEMatrix = T, getGPL = T, AnnotGPL = T)</code></p>
+<p><code>{r} data &lt;- getGEO(GEO = &quot;GSE58831&quot;, GSEMatrix = T, getGPL = T, AnnotGPL = T)</code></p>
 <ul>
 <li><p><em>GSEMatrix</em> argument is defined as providing a matrix
 includes information of data</p></li>
@@ -399,6 +398,40 @@ samples and clinical information</p></li>
 <li><p><em>AnnotGPL</em> argument is defined as providing annotation of
 probes to know probe IDs and genes</p></li>
 </ul>
+<p>Now, we can obtain to expression matrix as an <em>assaydata</em>
+inside the <em>data</em></p>
+<p><code>{r} assayData &lt;- data$GSE30812_series_matrix.txt.gz@assayData$exprs</code></p>
+<p><code>{r} head (assayData)</code></p>
+<pre><code>           GSM1420393 GSM1420394 GSM1420395 GSM1420396 GSM1420397 GSM1420398 GSM1420399
+1007_s_at   4.440616   4.308647   4.308647   4.307359   4.307359   4.300252   4.308647
+1053_at     8.905845   9.073703   9.600805   6.967785   8.379297   8.216474   7.740933
+117_at      2.739938   3.449308   2.734385   2.831919   2.983352   3.287753   2.664737
+121_at      4.218233   4.218233   4.218233   4.218233   4.218233   4.149675   4.218233
+1255_g_at   2.254394   2.254394   2.254394   2.254394   2.254394   2.254394   2.254394
+           GSM1420400 GSM1420401 GSM1420402 GSM1420403 GSM1420404 GSM1420405 GSM1420406
+1007_s_at   4.335793   4.939411   6.172363   4.308647   4.151949   4.308647   4.230704
+1053_at     8.392995   7.511040   7.715622   8.112302   8.577034   8.298663   7.856461
+117_at      2.958662   3.348214  11.884425   2.734385   7.764825   2.665857   5.207729
+121_at      4.508521   4.218233   4.218233   4.218233   4.218233   4.218233   4.316007
+1255_g_at   2.254394   2.254394   2.254394   2.254394   2.254394   2.254394   2.254394</code></pre>
+<ul>
+<li>GSM columns are defined as sample IDs</li>
+</ul>
+<p>The <em>phenotypes</em> or <em>clinical</em> information can be
+released from <em>phenoData</em> in <em>data</em>.</p>
+<p>This command provides all information about each sample, and the
+types of samples are shown.</p>
+<p><code>{r} pheno &lt;- data$GSE30812_series_matrix.txt.gz@phenoData@data</code></p>
+<p>There is another column called <em>featureData</em> in <em>data</em>
+which is defined as the gene annotation or probe IDs</p>
+<p><code>{r} names(feature)</code></p>
+<pre><code>&quot;ID&quot;                    &quot;Gene title&quot;            &quot;Gene symbol&quot;          
+ [4] &quot;Gene ID&quot;               &quot;UniGene title&quot;         &quot;UniGene symbol&quot;       
+ [7] &quot;UniGene ID&quot;            &quot;Nucleotide Title&quot;      &quot;GI&quot;                   
+[10] &quot;GenBank Accession&quot;     &quot;Platform_CLONEID&quot;      &quot;Platform_ORF&quot;         
+[13] &quot;Platform_SPOTID&quot;       &quot;Chromosome location&quot;   &quot;Chromosome annotation&quot;
+[16] &quot;GO:Function&quot;           &quot;GO:Process&quot;            &quot;GO:Component&quot;         
+[19] &quot;GO:Function ID&quot;        &quot;GO:Process ID&quot;         &quot;GO:Component ID&quot; </code></pre>
 </div>
 </div>
 </div>
