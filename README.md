@@ -99,6 +99,7 @@ names(feature)
 
 ## DEG analysis
 
+**Differential Expressed Genes** are employed for detecting hub genes based on significant differential expression between two groups.
 
 
 
