@@ -440,6 +440,18 @@ which is defined as the gene annotation or probe IDs</p>
 <p><strong>Differential Expressed Genes</strong> are employed for
 detecting hub genes based on significant differential expression between
 two groups.</p>
+<ul>
+<li>Using <code>edgeR</code> and <code>limma</code> package, we can
+analyze differential expressions of <em>microarray</em> datasets with
+<strong>TMM (trimmed mean of M-values)</strong> method of normalization
+for microarray. Besides, <em>Adj.P.Value</em> is added identifying the
+significance of differential expression, and <strong>logFC (log Fold
+Change)</strong> will be added to describe the counts of differential
+exprssion by <em>positive or negative</em> values.</li>
+</ul>
+<p>Here, I normalize and filter the raw data first using limma and edgeR
+package based on value distribution by TMM normalization method.</p>
+<p><code>{r} dge &lt;- DGEList(finalnormalize) keep &lt;- filterByExpr(dge, design = design) filt &lt;- dge[keep,,keep.lib.sizes=F] norm &lt;- calcNormFactors.DGEList(filt, method = &quot;TMM&quot;)</code></p>
 </div>
 </div>
 

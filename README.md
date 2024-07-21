@@ -101,6 +101,16 @@ names(feature)
 
 **Differential Expressed Genes** are employed for detecting hub genes based on significant differential expression between two groups.
 
+* Using `edgeR` and `limma` package, we can analyze differential expressions of *microarray* datasets with **TMM (trimmed mean of M-values)** method of normalization for microarray. Besides, *Adj.P.Value* is added identifying the significance of differential expression, and **logFC (log Fold Change)** will be added to describe the counts of differential exprssion by *positive or negative* values. 
+
+Here, I normalize and filter the raw data first using limma and edgeR package based on value distribution by TMM normalization method.
+
+```{r}
+dge <- DGEList(finalnormalize)
+keep <- filterByExpr(dge, design = design)
+filt <- dge[keep,,keep.lib.sizes=F]
+norm <- calcNormFactors.DGEList(filt, method = "TMM")
+```
 
 
 
