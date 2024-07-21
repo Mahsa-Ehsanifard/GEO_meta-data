@@ -465,6 +465,13 @@ values.</p></li>
 function in <em>logarithm</em> scale</p></li>
 </ul>
 <p><code>{r} fit &lt;- lmFit(Ex, design = design) contrast &lt;- makeContrasts(non_V600E-v600e, levels = design) fit2 &lt;- contrasts.fit(fit = fit, contrasts = contrast) fit2 &lt;- eBayes(fit2) deg &lt;- topTable(fit2, number = Inf)</code></p>
+<pre><code>                  logFC  AveExpr         t      P.Value    adj.P.Val        B 
+ENSG00000114302  2.059983 9.016187  9.425437 5.230565e-18 7.353333e-14 30.26257    
+ENSG00000135709 -1.866375 2.860313 -9.361123 8.118053e-18 7.353333e-14 29.83572   
+ENSG00000106733 -1.558516 2.832475 -9.152146 3.356666e-17 1.843978e-13 28.45755      
+ENSG00000157954 -2.057048 2.989810 -9.123564 4.071489e-17 1.843978e-13 28.27013      
+ENSG00000164944  1.905614 7.507759  9.077754 5.544899e-17 2.009028e-13 27.97029      
+ENSG00000187098 -1.353065 2.716279 -9.004784 9.056078e-17 2.533801e-13 27.49412</code></pre>
 </div>
 </div>
 
