@@ -106,10 +106,10 @@ names(feature)
 Here, I normalize and filter the raw data first using limma and edgeR package based on value distribution by TMM normalization method.
 
 ```{r}
-dge <- DGEList(finalnormalize)
-keep <- filterByExpr(dge, design = design)
+dge <- DGEList(be)
+keep <- filterByExpr(be, design = design)
 filt <- dge[keep,,keep.lib.sizes=F]
-norm <- calcNormFactors.DGEList(filt, method = "TMM")
+norm <- calcNormFactors.DGEList(filt, method = "upperquartile")
 ```
 
 * `voom` plot is provided for checking normalization and distribution of values using `limma` package
@@ -118,7 +118,9 @@ norm <- calcNormFactors.DGEList(filt, method = "TMM")
 v <- voom(norm,design = design, plot = T)
 ```
 
-![](D:/my freelancing/lung/figures/voom.tiff)
+![](http://127.0.0.1:31687/graphics/9a1ba304-8f00-4103-a3d6-dd085b3b9f61.png)
+
+
 
 
 
