@@ -122,8 +122,14 @@ v <- voom(norm,design = design, plot = T)
 
 * Now, we can analyze DEG result
 
-* *Ex* expression matrix is released from `voom` function in *logarithm* scale
+* *Ex* expression matrix is released from `voom` function in *logarithm* scale normalized values
 
+```
+                     GSM1420410        GSM1420411       GSM1420412       GSM1420413       GSM1420414 
+ ENSG00000000003 3.49401269701033 5.28960394224448 7.31855304943793 6.79353365184211 4.34146623558799
+ ENSG00000000005 2.48196276733284  2.4564806549044 2.47516837620647 2.47052677624909 2.48200884881274
+ ENSG00000000419 12.0297749782973 11.6021575137356 11.8016795438964 11.5994084078562 11.9931222883087
+```
 
 ```{r}
 fit <- lmFit(Ex, design = design)
