@@ -121,7 +121,9 @@ v <- voom(norm,design = design, plot = T)
 * this voom plot shows good distribution of normalized expression values.
 
 * Now, we can analyze DEG result
+
 * *Ex* expression matrix is released from `voom` function in *logarithm* scale
+
 
 ```{r}
 fit <- lmFit(Ex, design = design)
@@ -130,6 +132,8 @@ fit2 <- contrasts.fit(fit = fit, contrasts = contrast)
 fit2 <- eBayes(fit2)
 deg <- topTable(fit2, number = Inf)
 ```
+
+
 
 
 
