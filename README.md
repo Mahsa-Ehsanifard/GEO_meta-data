@@ -118,6 +118,8 @@ norm <- calcNormFactors.DGEList(filt, method = "TMM")
 v <- voom(norm,design = design, plot = T)
 ```
 
+![](https://github.com/Mahsa-Ehsanifard/GEO_microarray/blob/main/voom.png?raw=true)
+
 * this voom plot shows good distribution of normalized expression values.
 
 * Now, we can analyze DEG result
