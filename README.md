@@ -136,7 +136,7 @@ deg <- topTable(fit2, number = Inf)
 
 
 
-
+![](https://github.com/Mahsa-Ehsanifard/GEO_microarray/blob/main/voom.png?raw=true)
 
 
 
