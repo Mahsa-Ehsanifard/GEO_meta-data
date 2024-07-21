@@ -451,13 +451,21 @@ exprssion by <em>positive or negative</em> values.</li>
 </ul>
 <p>Here, I normalize and filter the raw data first using limma and edgeR
 package based on value distribution by TMM normalization method.</p>
-<p><code>{r} dge &lt;- DGEList(be) keep &lt;- filterByExpr(be, design = design) filt &lt;- dge[keep,,keep.lib.sizes=F] norm &lt;- calcNormFactors.DGEList(filt, method = &quot;upperquartile&quot;)</code></p>
+<p><code>{r} dge &lt;- DGEList(EXdata) keep &lt;- filterByExpr(dge, design = design) filt &lt;- dge[keep,,keep.lib.sizes=F] norm &lt;- calcNormFactors.DGEList(filt, method = &quot;TMM&quot;)</code></p>
 <ul>
 <li><code>voom</code> plot is provided for checking normalization and
 distribution of values using <code>limma</code> package</li>
 </ul>
 <p><code>{r} v &lt;- voom(norm,design = design, plot = T)</code></p>
 <p><img src="data:application/octet-stream;base64," /></p>
+<ul>
+<li><p>this voom plot shows good distribution of normalized expression
+values.</p></li>
+<li><p>Now, we can analyze DEG result</p></li>
+<li><p><em>Ex</em> expression matrix is released from <code>voom</code>
+function in <em>logarithm</em> scale</p></li>
+</ul>
+<p><code>{r} fit &lt;- lmFit(Ex, design = design) contrast &lt;- makeContrasts(non_V600E-v600e, levels = design) fit2 &lt;- contrasts.fit(fit = fit, contrasts = contrast) fit2 &lt;- eBayes(fit2) deg &lt;- topTable(fit2, number = Inf)</code></p>
 </div>
 </div>
 

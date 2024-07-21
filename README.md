@@ -106,10 +106,10 @@ names(feature)
 Here, I normalize and filter the raw data first using limma and edgeR package based on value distribution by TMM normalization method.
 
 ```{r}
-dge <- DGEList(be)
-keep <- filterByExpr(be, design = design)
+dge <- DGEList(EXdata)
+keep <- filterByExpr(dge, design = design)
 filt <- dge[keep,,keep.lib.sizes=F]
-norm <- calcNormFactors.DGEList(filt, method = "upperquartile")
+norm <- calcNormFactors.DGEList(filt, method = "TMM")
 ```
 
 * `voom` plot is provided for checking normalization and distribution of values using `limma` package
@@ -119,6 +119,20 @@ v <- voom(norm,design = design, plot = T)
 ```
 
 ![](http://127.0.0.1:31687/graphics/9a1ba304-8f00-4103-a3d6-dd085b3b9f61.png)
+
+* this voom plot shows good distribution of normalized expression values.
+
+* Now, we can analyze DEG result
+* *Ex* expression matrix is released from `voom` function in *logarithm* scale
+
+```{r}
+fit <- lmFit(Ex, design = design)
+contrast <- makeContrasts(non_V600E-v600e, levels = design)
+fit2 <- contrasts.fit(fit = fit, contrasts = contrast)
+fit2 <- eBayes(fit2)
+deg <- topTable(fit2, number = Inf)
+```
+
 
 
 
