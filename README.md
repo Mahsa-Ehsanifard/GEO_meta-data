@@ -118,8 +118,6 @@ norm <- calcNormFactors.DGEList(filt, method = "TMM")
 v <- voom(norm,design = design, plot = T)
 ```
 
-![](http://127.0.0.1:31687/graphics/9a1ba304-8f00-4103-a3d6-dd085b3b9f61.png)
-
 * this voom plot shows good distribution of normalized expression values.
 
 * Now, we can analyze DEG result
