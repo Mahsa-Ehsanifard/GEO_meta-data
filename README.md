@@ -118,7 +118,7 @@ norm <- calcNormFactors.DGEList(filt, method = "TMM")
 v <- voom(norm,design = design, plot = T)
 ```
 
-![](D:/my freelancing/lung/figures/Fig 1A.tiff)
+![](D:/my freelancing/lung/figures/voom.tiff)
 
 
 
