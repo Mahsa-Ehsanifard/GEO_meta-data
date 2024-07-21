@@ -112,6 +112,16 @@ filt <- dge[keep,,keep.lib.sizes=F]
 norm <- calcNormFactors.DGEList(filt, method = "TMM")
 ```
 
+* `voom` plot is provided for checking normalization and distribution of values using `limma` package
+
+```{r}
+v <- voom(norm,design = design, plot = T)
+```
+
+![](C:/Users/Lenovo/Desktop/GEO_meta-data/voom.tiff)
+
+
+
 
 
 
