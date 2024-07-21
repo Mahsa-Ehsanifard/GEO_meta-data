@@ -120,7 +120,7 @@ v <- voom(norm,design = design, plot = T)
 
 ![](http://127.0.0.1:31687/graphics/9a1ba304-8f00-4103-a3d6-dd085b3b9f61.png)
 
-
+![](https://github.com/Mahsa-Ehsanifard/GEO_microarray/blob/main/voom.png?raw=true)
 
 
 
